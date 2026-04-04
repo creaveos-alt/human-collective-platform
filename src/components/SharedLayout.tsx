@@ -50,6 +50,16 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             <Link
+              to="/"
+              className={`text-sm tracking-wide transition-all duration-400 ${
+                currentPath === '/' 
+                  ? 'text-[#65D6C8]' 
+                  : 'text-[#FDFDFB]/70 hover:text-[#65D6C8]'
+              }`}
+            >
+              Home
+            </Link>
+            <Link
               to="/about"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/about' 
@@ -194,6 +204,13 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
               className="lg:hidden mt-4 pt-4 border-t border-[#65D6C8]/20"
             >
               <nav className="flex flex-col gap-4">
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
+                >
+                  Home
+                </Link>
                 <Link
                   to="/about"
                   onClick={() => setMobileMenuOpen(false)}
