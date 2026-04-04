@@ -8,7 +8,7 @@ export function AboutPage() {
   return (
     <div className="relative pt-20">
       {/* Hero */}
-      <section className="relative pt-20 pb-32 px-6 overflow-hidden">
+      <section className="relative pt-20 pb-24 px-6 overflow-hidden">
         {/* Aurora background */}
         <motion.div
           animate={{ x: ["-100%", "100%"] }}
