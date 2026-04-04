@@ -161,10 +161,10 @@ const calendarEvents = [
 
 function RSVPModal({ event, isOpen, onClose }: any) {
   const [step, setStep] = useState<'form' | 'confirmation'>('form');
-  const [formData, setFormData] = useState({ 
-    name: "", 
-    email: "", 
-    chapter: "" 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    chapter: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -184,181 +184,156 @@ function RSVPModal({ event, isOpen, onClose }: any) {
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={handleClose}
-        className="fixed inset-0 z-[60] flex items-center justify-center bg-[#040619]/90 backdrop-blur-md"
-      >
+      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-6">
         <motion.div
-          initial={{ scale: 0.95, y: -20 }}
-          animate={{ scale: 1, y: 0 }}
-          exit={{ scale: 0.95, y: -20 }}
-          onClick={(e) => e.stopPropagation()}
-          className="relative max-w-lg w-full mx-6 p-8 rounded-2xl border border-[#65D6C8]/30 bg-gradient-to-br from-[#111931]/98 to-[#0a0a2e]/98 shadow-[0_0_60px_rgba(101,214,200,0.25)]"
-        >
-          <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-full hover:bg-[#65D6C8]/10 transition-colors"
-          >
-            <X className="w-5 h-5 text-[#FDFDFB]/70" />
-          </button>
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={handleClose}
+          className="absolute inset-0 bg-[#040619]/90 backdrop-blur-sm"
+        />
 
-          {/* Ambient glow */}
-          <div 
-            className="absolute inset-0 rounded-2xl blur-3xl opacity-15 pointer-events-none"
-            style={{ background: `radial-gradient(circle, ${event.color}, transparent)` }}
-          />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 18 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.98, y: 10 }}
+          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+          onClick={(e) => e.stopPropagation()}
+          className="relative w-full max-w-3xl rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
+        >
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#65D6C8]/50 to-transparent" />
 
           {step === 'form' ? (
-            <div className="relative">
-              <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-[#7A6FF0]/10 to-[#65D6C8]/8 blur-2xl opacity-70 pointer-events-none" />
-              <div className="relative rounded-[24px] border border-[#7A6FF0]/28 bg-[#0A1022]/78 backdrop-blur-xl px-6 py-6 md:px-7 md:py-7">
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between gap-4">
-                    {event.isFlagship ? (
-                      <div className="inline-flex items-center gap-2 rounded-full border border-[#65D6C8]/18 bg-[#65D6C8]/10 px-3 py-1.5 text-xs text-[#65D6C8]">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        Flagship Event Series
-                      </div>
-                    ) : (
-                      <div className="inline-flex items-center rounded-full border border-[#65D6C8]/18 bg-[#65D6C8]/10 px-3 py-1.5 text-xs text-[#65D6C8]">
-                        Upcoming Event
-                      </div>
-                    )}
+            <>
+              <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-6 md:px-8 py-5">
+                <div className="flex items-start justify-between gap-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-[#65D6C8]" />
+                      <span className="text-xs text-[#7A6FF0] uppercase tracking-[0.22em]">
+                        {event.isFlagship ? 'Flagship Event Series' : 'Upcoming Event'}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl text-[#FDFDFB] leading-tight">{event.name}</h3>
+                    <p className="text-sm md:text-base text-[#FDFDFB]/60 max-w-2xl leading-relaxed">
+                      Reserve your place and we’ll share the details with you.
+                    </p>
                   </div>
 
-                  <div className="space-y-3">
-                    <h3 className="text-[30px] leading-tight text-[#FDFDFB]">{event.name}</h3>
-
-                    <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#FDFDFB]/68">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-[#65D6C8]" />
-                        {event.date}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-[#65D6C8]" />
-                        {event.time}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-[#65D6C8]" />
-                        {event.location}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="h-px bg-gradient-to-r from-[#65D6C8]/24 via-[#7A6FF0]/24 to-transparent" />
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
-                        <User className="w-4 h-4 text-[#65D6C8]" />
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
-                        placeholder="Enter your name"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
-                        <Mail className="w-4 h-4 text-[#65D6C8]" />
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
-                        <Building2 className="w-4 h-4 text-[#65D6C8]" />
-                        Chapter / Region (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.chapter}
-                        onChange={(e) => setFormData({ ...formData, chapter: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
-                        placeholder="e.g. NYC, London, Global"
-                      />
-                    </div>
-
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.01, boxShadow: "0 0 24px rgba(101,214,200,0.24)" }}
-                      whileTap={{ scale: 0.99 }}
-                      className="w-full mt-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium transition-all"
-                    >
-                      Confirm RSVP
-                    </motion.button>
-                  </form>
+                  <button
+                    onClick={handleClose}
+                    className="p-2 rounded-lg text-[#FDFDFB]/60 hover:text-[#65D6C8] hover:bg-[#65D6C8]/10 transition-all duration-300"
+                  >
+                    <span className="sr-only">Close</span>
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
-            </div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative py-8 text-center space-y-6"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", delay: 0.2 }}
-                className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] flex items-center justify-center"
-              >
-                <Check className="w-10 h-10 text-[#040619]" strokeWidth={3} />
-              </motion.div>
 
-              <div>
-                <h4 className="text-2xl text-[#FDFDFB] mb-2">You're Registered! 🎉</h4>
-                <p className="text-sm text-[#FDFDFB]/70">
+              <div className="p-6 md:p-8">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#7A6FF0]/14 to-[#65D6C8]/10 blur-2xl opacity-60" />
+                  <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-6 md:p-7">
+                    <div className="mb-6 rounded-2xl border border-[#65D6C8]/12 bg-[#040619]/60 px-5 py-5">
+                      <div className="space-y-3 text-sm text-[#FDFDFB]/75">
+                        <div className="flex items-center gap-3">
+                          <Calendar className="w-4 h-4 text-[#65D6C8]" />
+                          {event.date}
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Clock className="w-4 h-4 text-[#65D6C8]" />
+                          {event.time}
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <MapPin className="w-4 h-4 text-[#65D6C8]" />
+                          {event.location}
+                        </div>
+                      </div>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                          <User className="w-4 h-4 text-[#65D6C8]" />
+                          Your Name
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                          placeholder="Enter your name"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                          <Mail className="w-4 h-4 text-[#65D6C8]" />
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                          <Building2 className="w-4 h-4 text-[#65D6C8]" />
+                          Chapter / Region (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.chapter}
+                          onChange={(e) => setFormData({ ...formData, chapter: e.target.value })}
+                          className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                          placeholder="e.g. NYC, London, Global"
+                        />
+                      </div>
+
+                      <div className="pt-2">
+                        <motion.button
+                          type="submit"
+                          whileHover={{ scale: 1.01, boxShadow: "0 0 24px rgba(101,214,200,0.24)" }}
+                          whileTap={{ scale: 0.99 }}
+                          className="w-full px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium transition-all"
+                        >
+                          Confirm RSVP
+                        </motion.button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="p-6 md:p-8">
+              <div className="rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#65D6C8]/20 to-[#7A6FF0]/20 flex items-center justify-center mx-auto mb-6">
+                  <Check className="w-8 h-8 text-[#65D6C8]" strokeWidth={3} />
+                </div>
+
+                <h4 className="text-2xl md:text-3xl text-[#FDFDFB] mb-3">You're Registered!</h4>
+                <p className="text-[#FDFDFB]/70 mb-8 max-w-md mx-auto leading-relaxed">
                   Confirmation sent to {formData.email}
                 </p>
-              </div>
 
-              <div className="p-4 rounded-lg bg-[#7A6FF0]/10 border border-[#7A6FF0]/30 text-left">
-                <h5 className="text-sm font-medium text-[#FDFDFB] mb-3">Add to Calendar</h5>
-                <div className="flex gap-2">
-                  <button className="flex-1 px-3 py-2 rounded-lg border border-[#FDFDFB]/20 text-xs text-[#FDFDFB] hover:bg-[#FDFDFB]/5 transition-colors flex items-center justify-center gap-1">
-                    <Download className="w-3 h-3" />
-                    Google
-                  </button>
-                  <button className="flex-1 px-3 py-2 rounded-lg border border-[#FDFDFB]/20 text-xs text-[#FDFDFB] hover:bg-[#FDFDFB]/5 transition-colors flex items-center justify-center gap-1">
-                    <Download className="w-3 h-3" />
-                    Apple
-                  </button>
-                  <button className="flex-1 px-3 py-2 rounded-lg border border-[#FDFDFB]/20 text-xs text-[#FDFDFB] hover:bg-[#FDFDFB]/5 transition-colors flex items-center justify-center gap-1">
-                    <Download className="w-3 h-3" />
-                    Outlook
-                  </button>
-                </div>
+                <button
+                  onClick={handleClose}
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium"
+                >
+                  Done
+                </button>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={handleClose}
-                className="w-full py-3 rounded-lg border border-[#65D6C8]/50 text-[#65D6C8] hover:bg-[#65D6C8]/10 transition-all"
-              >
-                Close
-              </motion.button>
-            </motion.div>
+            </div>
           )}
         </motion.div>
-      </motion.div>
+      </div>
     </AnimatePresence>
   );
 }
