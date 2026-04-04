@@ -72,8 +72,7 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative flex flex-col items-center justify-center overflow-hidden pt-[80px]"
-      style={{ minHeight: "1024px" }}
+      className="relative flex min-h-[110vh] flex-col items-center justify-center overflow-hidden pt-[80px]"
     >
       {/* Aurora gradients */}
       <motion.div
