@@ -39,7 +39,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
   const [hoveredChapter, setHoveredChapter] = useState<Chapter | null>(null);
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
 
-  const displayedChapters = preview ? chapters.slice(0, 10) : chapters;
+  const displayedChapters = preview ? chapters.slice(0, 14) : chapters;
 
   return (
     <div className="relative">
@@ -56,7 +56,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
           <img
             src={worldMap}
             alt="World map"
-            className="w-full max-w-[1200px] h-auto object-contain opacity-12 select-none pointer-events-none"
+            className="w-full max-w-[1200px] h-auto object-contain opacity-28 select-none pointer-events-none"
           />
         </div>
 
@@ -117,7 +117,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-[#65D6C8]/20 to-[#7A6FF0]/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-[#65D6C8]/10 to-[#7A6FF0]/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -130,7 +130,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
             ease: "easeInOut",
             delay: 2
           }}
-          className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-[#7A6FF0]/20 to-[#A8F0E4]/20 rounded-full blur-3xl"
+          className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-[#7A6FF0]/10 to-[#A8F0E4]/10 rounded-full blur-3xl"
         />
 
         {/* Chapter nodes */}
@@ -151,21 +151,21 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
               {/* Pulsing glow */}
               <motion.div
                 animate={{
-                  scale: [1, 1.8, 1],
-                  opacity: [0.4, 0.7, 0.4]
+                  scale: [1, 1.45, 1],
+                  opacity: [0.22, 0.4, 0.22]
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   delay: index * 0.2
                 }}
-                className="absolute inset-0 -m-3 bg-[#65D6C8] rounded-full blur-md"
+                className="absolute inset-0 -m-1.5 bg-[#65D6C8]/85 rounded-full blur-[6px]"
               />
               
               {/* Node dot */}
               <motion.div
                 whileHover={{ scale: 1.5 }}
-                className="relative w-3 h-3 rounded-full bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] shadow-[0_0_10px_rgba(101,214,200,0.6)]"
+                className="relative w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] shadow-[0_0_6px_rgba(101,214,200,0.3)]"
               />
 
               {/* Hover tooltip */}
