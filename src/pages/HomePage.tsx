@@ -16,7 +16,7 @@ export function HomePage() {
   const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div id="top" className="relative overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection />
 
@@ -279,7 +279,7 @@ function MetricCard({ value, label, delay }: { value: string; label: string; del
 // ========================================
 function PhilosophySection() {
   return (
-    <section className="relative py-24 px-6">
+    <section id="about" className="relative py-24 px-6">
       <div className="max-w-[1440px] mx-auto">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.div
@@ -333,7 +333,7 @@ function ThreePillarsPreview() {
   ];
 
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
+    <section id="programs" className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -424,7 +424,11 @@ function ThreePillarsPreview() {
 // UPCOMING EVENTS PREVIEW
 // ========================================
 function UpcomingEventsPreview() {
-  return <HomeEventsInteractive />;
+  return (
+    <div id="events">
+      <HomeEventsInteractive />
+    </div>
+  );
 }
 
 // ========================================
@@ -432,7 +436,7 @@ function UpcomingEventsPreview() {
 // ========================================
 function GlobalNetworkPreview() {
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
+    <section id="chapters" className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -499,7 +503,7 @@ function BuildersPreview({ onSelectBuilder }: any) {
   ];
 
   return (
-    <section className="relative py-24 px-6">
+    <section id="builders" className="relative py-24 px-6">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

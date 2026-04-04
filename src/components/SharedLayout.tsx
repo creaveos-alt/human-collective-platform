@@ -12,8 +12,19 @@ export function SharedLayout() {
   const location = useLocation();
 
   useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 0);
+        return;
+      }
+    }
+
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="relative min-h-screen bg-[#040619]">
@@ -43,14 +54,14 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="px-4 py-1">
+          <Link to="/#top" className="px-4 py-1">
             <BrandWordmark animated={false} />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             <Link
-              to="/"
+              to="/#top"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/' 
                   ? 'text-[#65D6C8]' 
@@ -60,7 +71,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
               Home
             </Link>
             <Link
-              to="/about"
+              to="/#about"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/about' 
                   ? 'text-[#65D6C8]' 
@@ -96,7 +107,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
                     className="absolute top-full left-0 mt-2 w-56 bg-[#0D1226]/98 backdrop-blur-xl border border-[#65D6C8]/30 rounded-xl overflow-hidden shadow-2xl"
                   >
                     <Link
-                      to="/programs"
+                      to="/#programs"
                       className="block px-4 py-3 text-sm text-[#FDFDFB]/80 hover:text-[#65D6C8] hover:bg-[#7A6FF0]/10 transition-all"
                     >
                       All Programs
@@ -119,7 +130,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
             </div>
 
             <Link
-              to="/chapters"
+              to="/#chapters"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/chapters' 
                   ? 'text-[#65D6C8]' 
@@ -129,7 +140,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
               Chapters
             </Link>
             <Link
-              to="/events"
+              to="/#events"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/events' 
                   ? 'text-[#65D6C8]' 
@@ -139,7 +150,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
               Events
             </Link>
             <Link
-              to="/builders"
+              to="/#builders"
               className={`text-sm tracking-wide transition-all duration-400 ${
                 currentPath === '/builders' 
                   ? 'text-[#65D6C8]' 
@@ -205,42 +216,42 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
             >
               <nav className="flex flex-col gap-4">
                 <Link
-                  to="/"
+                  to="/#top"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
                   Home
                 </Link>
                 <Link
-                  to="/about"
+                  to="/#about"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
                   About
                 </Link>
                 <Link
-                  to="/programs"
+                  to="/#programs"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
                   Programs
                 </Link>
                 <Link
-                  to="/chapters"
+                  to="/#chapters"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
                   Chapters
                 </Link>
                 <Link
-                  to="/events"
+                  to="/#events"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
                   Events
                 </Link>
                 <Link
-                  to="/builders"
+                  to="/#builders"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
                 >
