@@ -16,113 +16,106 @@ interface BuilderModalProps {
 export function BuilderModal({ builder, onClose }: BuilderModalProps) {
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        {/* Backdrop */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-[#040619]/90 backdrop-blur-md"
+          className="absolute inset-0 bg-[#040619]/90 backdrop-blur-sm"
         />
 
-        {/* Modal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.96, y: 18 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative w-full max-w-2xl overflow-visible"
+          exit={{ opacity: 0, scale: 0.98, y: 10 }}
+          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+          className="relative w-full max-w-3xl rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
         >
-          {/* Aurora glow behind modal */}
-          <motion.div
-            animate={{
-              opacity: [0.3, 0.5, 0.3],
-              scale: [1, 1.05, 1]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute inset-0 -m-6 bg-gradient-to-br from-[#7A6FF0]/35 to-[#65D6C8]/35 rounded-3xl blur-3xl pointer-events-none"
-          />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#65D6C8]/50 to-transparent" />
 
-          {/* Modal Container */}
-          <div className="relative bg-[#0D1226]/98 backdrop-blur-xl border border-[#65D6C8]/30 rounded-2xl shadow-2xl overflow-hidden">
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-[#040619]/50 border border-[#65D6C8]/20 flex items-center justify-center hover:bg-[#65D6C8]/10 hover:border-[#65D6C8]/40 transition-all"
-            >
-              <X className="w-5 h-5 text-[#FDFDFB]/80" />
-            </button>
-
-            {/* Content */}
-            <div className="p-8 md:p-10">
-              {/* Avatar */}
-              <div className="flex justify-center mb-8">
-                <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#65D6C8]/18 to-[#7A6FF0]/18 flex items-center justify-center border border-[#65D6C8]/25">
-                  <div className="text-4xl font-semibold bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent">
-                    {builder.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                </div>
-              </div>
-
-              {/* Name & Role */}
-              <div className="text-center mb-8">
-                <h2 className="text-3xl text-[#FDFDFB] mb-2">{builder.name}</h2>
-                <div className="inline-flex px-4 py-2 rounded-full bg-gradient-to-r from-[#65D6C8]/8 to-[#7A6FF0]/8 border border-[#65D6C8]/18">
-                  <span className="text-[#65D6C8] font-medium">{builder.role}</span>
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div className="mb-8">
-                <h3 className="text-lg text-[#FDFDFB] font-medium mb-4">About</h3>
-                <p className="text-[#FDFDFB]/70 leading-relaxed">
-                  {builder.bio}
+          <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-6 md:px-8 py-5">
+            <div className="flex items-start justify-between gap-6">
+              <div className="space-y-2">
+                <div className="text-xs text-[#7A6FF0] uppercase tracking-[0.22em]">Collective Builders</div>
+                <h2 className="text-2xl md:text-3xl text-[#FDFDFB] leading-tight">{builder.name}</h2>
+                <p className="text-sm md:text-base text-[#FDFDFB]/60 max-w-2xl leading-relaxed">
+                  Meet the people helping shape the Collective through learning, community, and systems thinking.
                 </p>
               </div>
 
-              {/* Extended Bio Section */}
-              <div className="mb-8 p-5 rounded-xl bg-gradient-to-br from-[#7A6FF0]/4 to-[#65D6C8]/4 border border-[#65D6C8]/10">
-                <h3 className="text-lg text-[#FDFDFB] font-medium mb-4">Perspective</h3>
-                <div className="space-y-3 text-[#FDFDFB]/70 text-sm leading-relaxed">
-                  <p>
-                    Working across technology, participation, and public impact, 
-                    {builder.name.split(' ')[0]} brings a unique perspective to the challenges of AI development and deployment.
-                  </p>
-                  <p>
-                    Their work focuses on making sure AI systems expand human capability rather than narrow it, 
-                    with particular attention to accessibility, equity, and community engagement.
+              <button
+                onClick={onClose}
+                className="p-2 rounded-lg text-[#FDFDFB]/60 hover:text-[#65D6C8] hover:bg-[#65D6C8]/10 transition-all duration-300"
+              >
+                <span className="sr-only">Close</span>
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="p-6 md:p-8">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#7A6FF0]/14 to-[#65D6C8]/10 blur-2xl opacity-60" />
+              <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-6 md:p-7">
+                <div className="flex flex-col items-center text-center mb-8">
+                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#65D6C8]/18 to-[#7A6FF0]/18 flex items-center justify-center border border-[#65D6C8]/25 mb-5">
+                    <div className="text-4xl font-semibold bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent">
+                      {builder.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                  </div>
+
+                  <h3 className="text-3xl text-[#FDFDFB] mb-3">{builder.name}</h3>
+
+                  <div className="inline-flex px-4 py-2 rounded-full bg-gradient-to-r from-[#65D6C8]/8 to-[#7A6FF0]/8 border border-[#65D6C8]/18">
+                    <span className="text-[#65D6C8] font-medium">{builder.role}</span>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h4 className="text-lg text-[#FDFDFB] font-medium mb-4">About</h4>
+                  <p className="text-[#FDFDFB]/72 leading-relaxed">
+                    {builder.bio}
                   </p>
                 </div>
-              </div>
 
-              {/* Areas of Focus */}
-              <div className="mb-8">
-                <h3 className="text-lg text-[#FDFDFB] font-medium mb-4">Areas of Focus</h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "AI Ethics",
-                    "Community Building",
-                    "Policy Development",
-                    "Education Design",
-                    "Participatory Research"
-                  ].map((area, index) => (
-                    <span
-                      key={index}
-                      className="px-4 py-2 rounded-full bg-[#7A6FF0]/10 border border-[#7A6FF0]/20 text-[#FDFDFB]/80 text-sm"
-                    >
-                      {area}
-                    </span>
-                  ))}
+                <div className="mb-8 p-5 rounded-2xl bg-gradient-to-br from-[#7A6FF0]/4 to-[#65D6C8]/4 border border-[#65D6C8]/10">
+                  <h4 className="text-lg text-[#FDFDFB] font-medium mb-4">Perspective</h4>
+                  <div className="space-y-3 text-[#FDFDFB]/70 text-sm leading-relaxed">
+                    <p>
+                      Working across technology, participation, and public impact,
+                      {" "}{builder.name.split(' ')[0]} brings a unique perspective to the challenges of AI development and deployment.
+                    </p>
+                    <p>
+                      Their work focuses on making sure AI systems expand human capability rather than narrow it,
+                      with particular attention to accessibility, equity, and community engagement.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="pt-2">
-                <div className="h-px bg-gradient-to-r from-[#65D6C8]/20 via-[#7A6FF0]/20 to-transparent" />
+                <div className="mb-2">
+                  <h4 className="text-lg text-[#FDFDFB] font-medium mb-4">Areas of Focus</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "AI Ethics",
+                      "Community Building",
+                      "Policy Development",
+                      "Education Design",
+                      "Participatory Research"
+                    ].map((area, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 rounded-full bg-[#7A6FF0]/10 border border-[#7A6FF0]/20 text-[#FDFDFB]/80 text-sm"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-6">
+                  <div className="h-px bg-gradient-to-r from-[#65D6C8]/20 via-[#7A6FF0]/20 to-transparent" />
+                </div>
               </div>
             </div>
           </div>
