@@ -2,7 +2,7 @@
 
 import { Outlet, Link, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart, Calendar, Menu, X, ChevronDown } from "lucide-react";
 import { BrandWordmark } from "./BrandWordmark";
 
@@ -10,6 +10,10 @@ export function SharedLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="relative min-h-screen bg-[#040619]">
