@@ -61,7 +61,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
         </div>
 
         {/* Connection lines between chapters */}
-        <svg className="absolute inset-0 pointer-events-none opacity-20">
+        <svg className="absolute inset-0 pointer-events-none opacity-8">
           <defs>
             <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#65D6C8" />
@@ -77,7 +77,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
           <motion.path
             d="M 150 180 Q 400 100 820 190"
             stroke="url(#lineGradient1)"
-            strokeWidth="1"
+            strokeWidth="0.8"
             fill="none"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
@@ -87,7 +87,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
           <motion.path
             d="M 250 185 Q 500 250 810 185"
             stroke="url(#lineGradient2)"
-            strokeWidth="1"
+            strokeWidth="0.8"
             fill="none"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
@@ -97,7 +97,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
           <motion.path
             d="M 300 350 Q 600 400 840 375"
             stroke="url(#lineGradient1)"
-            strokeWidth="1"
+            strokeWidth="0.8"
             fill="none"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
@@ -151,21 +151,21 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
               {/* Pulsing glow */}
               <motion.div
                 animate={{
-                  scale: [1, 1.45, 1],
-                  opacity: [0.22, 0.4, 0.22]
+                  scale: [1, 1.22, 1],
+                  opacity: [0.14, 0.26, 0.14]
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   delay: index * 0.2
                 }}
-                className="absolute inset-0 -m-1.5 bg-[#65D6C8]/85 rounded-full blur-[6px]"
+                className="absolute inset-0 -m-1 bg-[#65D6C8]/55 rounded-full blur-[4px]"
               />
               
               {/* Node dot */}
               <motion.div
                 whileHover={{ scale: 1.5 }}
-                className="relative w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] shadow-[0_0_6px_rgba(101,214,200,0.3)]"
+                className="relative w-3 h-3 rounded-full bg-gradient-to-br from-[#65D6C8] to-[#7A6FF0] shadow-[0_0_4px_rgba(101,214,200,0.22)] ring-1 ring-[#A8F0E4]/12"
               />
 
               {/* Hover tooltip */}
@@ -211,22 +211,22 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="mt-8 grid grid-cols-3 gap-6"
+        className="mt-6 grid grid-cols-3 gap-5"
       >
-        <div className="text-center p-4 rounded-xl border border-[#65D6C8]/10 bg-gradient-to-br from-[#7A6FF0]/5 to-[#65D6C8]/5">
-          <div className="text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
+        <div className="text-center px-4 py-3 rounded-xl border border-[#65D6C8]/8 bg-[#FDFDFB]/[0.02] backdrop-blur-sm">
+          <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
             {chapters.length}
           </div>
           <div className="text-sm text-[#FDFDFB]/60">Active Chapters</div>
         </div>
-        <div className="text-center p-4 rounded-xl border border-[#65D6C8]/10 bg-gradient-to-br from-[#7A6FF0]/5 to-[#65D6C8]/5">
-          <div className="text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
+        <div className="text-center px-4 py-3 rounded-xl border border-[#65D6C8]/8 bg-[#FDFDFB]/[0.02] backdrop-blur-sm">
+          <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
             20
           </div>
           <div className="text-sm text-[#FDFDFB]/60">Countries</div>
         </div>
-        <div className="text-center p-4 rounded-xl border border-[#65D6C8]/10 bg-gradient-to-br from-[#7A6FF0]/5 to-[#65D6C8]/5">
-          <div className="text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
+        <div className="text-center px-4 py-3 rounded-xl border border-[#65D6C8]/8 bg-[#FDFDFB]/[0.02] backdrop-blur-sm">
+          <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">
             5,000+
           </div>
           <div className="text-sm text-[#FDFDFB]/60">Global Members</div>
