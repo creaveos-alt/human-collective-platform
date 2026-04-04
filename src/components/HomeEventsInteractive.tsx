@@ -212,87 +212,100 @@ function RSVPModal({ event, isOpen, onClose }: any) {
           />
 
           {step === 'form' ? (
-            <div className="relative space-y-6">
-              {event.isFlagship && (
-                <div className="flex items-center gap-2 text-sm text-[#65D6C8]">
-                  <Sparkles className="w-4 h-4" />
-                  Flagship Event Series
-                </div>
-              )}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-[#7A6FF0]/10 to-[#65D6C8]/8 blur-2xl opacity-70 pointer-events-none" />
+              <div className="relative rounded-[24px] border border-[#7A6FF0]/28 bg-[#0A1022]/78 backdrop-blur-xl px-6 py-6 md:px-7 md:py-7">
+                <div className="space-y-5">
+                  <div className="flex items-center justify-between gap-4">
+                    {event.isFlagship ? (
+                      <div className="inline-flex items-center gap-2 rounded-full border border-[#65D6C8]/18 bg-[#65D6C8]/10 px-3 py-1.5 text-xs text-[#65D6C8]">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        Flagship Event Series
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center rounded-full border border-[#65D6C8]/18 bg-[#65D6C8]/10 px-3 py-1.5 text-xs text-[#65D6C8]">
+                        Upcoming Event
+                      </div>
+                    )}
+                  </div>
 
-              <h3 className="text-2xl text-[#FDFDFB]">{event.name}</h3>
+                  <div className="space-y-3">
+                    <h3 className="text-[30px] leading-tight text-[#FDFDFB]">{event.name}</h3>
 
-              <div className="flex flex-wrap gap-4 text-sm text-[#FDFDFB]/70">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#65D6C8]" />
-                  {event.date}
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#65D6C8]" />
-                  {event.time}
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#65D6C8]" />
-                  {event.location}
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#FDFDFB]/68">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-[#65D6C8]" />
+                        {event.date}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-[#65D6C8]" />
+                        {event.time}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-[#65D6C8]" />
+                        {event.location}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="h-px bg-gradient-to-r from-[#65D6C8]/24 via-[#7A6FF0]/24 to-transparent" />
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                        <User className="w-4 h-4 text-[#65D6C8]" />
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                        placeholder="Enter your name"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                        <Mail className="w-4 h-4 text-[#65D6C8]" />
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/82 mb-2">
+                        <Building2 className="w-4 h-4 text-[#65D6C8]" />
+                        Chapter / Region (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.chapter}
+                        onChange={(e) => setFormData({ ...formData, chapter: e.target.value })}
+                        className="w-full px-4 py-3.5 rounded-xl bg-[#040619]/88 border border-[#65D6C8]/16 text-[#FDFDFB] placeholder:text-[#FDFDFB]/35 focus:border-[#65D6C8]/55 focus:outline-none transition-colors"
+                        placeholder="e.g. NYC, London, Global"
+                      />
+                    </div>
+
+                    <motion.button
+                      type="submit"
+                      whileHover={{ scale: 1.01, boxShadow: "0 0 24px rgba(101,214,200,0.24)" }}
+                      whileTap={{ scale: 0.99 }}
+                      className="w-full mt-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium transition-all"
+                    >
+                      Confirm RSVP
+                    </motion.button>
+                  </form>
                 </div>
               </div>
-
-              <div className="h-px bg-gradient-to-r from-[#65D6C8]/30 via-[#7A6FF0]/30 to-transparent" />
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/80 mb-2">
-                    <User className="w-4 h-4 text-[#65D6C8]" />
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#040619]/50 border border-[#FDFDFB]/20 text-[#FDFDFB] placeholder:text-[#FDFDFB]/40 focus:border-[#65D6C8]/60 focus:outline-none transition-colors"
-                    placeholder="Enter your name"
-                  />
-                </div>
-
-                <div>
-                  <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/80 mb-2">
-                    <Mail className="w-4 h-4 text-[#65D6C8]" />
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#040619]/50 border border-[#FDFDFB]/20 text-[#FDFDFB] placeholder:text-[#FDFDFB]/40 focus:border-[#65D6C8]/60 focus:outline-none transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="flex items-center gap-2 text-sm text-[#FDFDFB]/80 mb-2">
-                    <Building2 className="w-4 h-4 text-[#65D6C8]" />
-                    Chapter / Region (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.chapter}
-                    onChange={(e) => setFormData({ ...formData, chapter: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#040619]/50 border border-[#FDFDFB]/20 text-[#FDFDFB] placeholder:text-[#FDFDFB]/40 focus:border-[#65D6C8]/60 focus:outline-none transition-colors"
-                    placeholder="e.g. NYC, London, Global"
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(101,214,200,0.4)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium transition-all"
-                >
-                  Confirm RSVP
-                </motion.button>
-              </form>
             </div>
           ) : (
             <motion.div
@@ -745,7 +758,7 @@ export function FullyInteractiveEventsSection() {
               onClick={prevSlide}
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(101,214,200,0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
+              className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
               aria-label="Previous event"
             >
               <ChevronLeft className="w-6 h-6 text-[#65D6C8]" />
@@ -755,7 +768,7 @@ export function FullyInteractiveEventsSection() {
               onClick={nextSlide}
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(101,214,200,0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
+              className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
               aria-label="Next event"
             >
               <ChevronRight className="w-6 h-6 text-[#65D6C8]" />
