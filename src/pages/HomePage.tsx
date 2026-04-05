@@ -78,7 +78,7 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[110vh] flex-col items-center justify-center overflow-hidden pt-[80px]"
+      className="relative flex min-h-[100svh] md:min-h-[110vh] flex-col items-center justify-center overflow-hidden pt-[88px] md:pt-[80px]"
     >
       {/* Aurora gradients */}
       <motion.div
@@ -95,10 +95,10 @@ function HeroSection() {
       {/* Content Container */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-6"
+        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-5 sm:px-6"
       >
         {/* Crystal - 225 x 225, 40px from header */}
-        <div className="relative w-[225px] h-[225px] flex items-center justify-center mb-10">
+        <div className="relative w-[170px] h-[170px] sm:w-[200px] sm:h-[200px] md:w-[225px] md:h-[225px] flex items-center justify-center mb-8 sm:mb-10">
           {/* Ambient Aurora Sweeps */}
           <motion.div
             animate={{ x: ["-120%", "120%"] }}
@@ -149,7 +149,7 @@ function HeroSection() {
           className="text-center w-full max-w-[1000px] mb-10"
         >
           <h1 
-            className="text-[#FDFDFB] leading-[100px]"
+            className="text-[#FDFDFB] text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.02]"
             style={{ fontSize: "60px" }}
           >
             No one left behind in the age of AI.
@@ -161,7 +161,7 @@ function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1 }}
-          className="text-center w-full max-w-[1000px] text-xl text-[#FDFDFB]/80 leading-relaxed mb-10"
+          className="text-center w-full max-w-[1000px] text-base sm:text-lg md:text-xl text-[#FDFDFB]/80 leading-relaxed mb-8 sm:mb-10 px-1"
         >
           The Human + AI Collective builds practical pathways into the future through learning, local chapters, shared opportunity, and policy shaped by people.
         </motion.p>
@@ -218,7 +218,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px]"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-[1000px]"
         >
           <MetricCard value="5K+" label="Community Members" delay={0} />
           <MetricCard value="28" label="Global Chapters" delay={0.3} />
@@ -281,7 +281,7 @@ function MetricCard({ value, label, delay }: { value: string; label: string; del
 // ========================================
 function PhilosophySection() {
   return (
-    <section id="about" className="relative py-24 px-6">
+    <section id="about" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6">
       <div className="max-w-[1440px] mx-auto">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.div
@@ -290,13 +290,13 @@ function PhilosophySection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl text-[#FDFDFB] mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#FDFDFB] mb-5 sm:mb-6">
               About the Collective
             </h2>
-            <p className="text-lg text-[#FDFDFB]/70 leading-relaxed mb-6">
+            <p className="text-base sm:text-lg text-[#FDFDFB]/70 leading-relaxed mb-5 sm:mb-6">
               Human + AI Collective is building a future where artificial intelligence expands human dignity, access, and shared opportunity rather than leaving people behind.
             </p>
-            <p className="text-lg text-[#FDFDFB]/70 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#FDFDFB]/70 leading-relaxed">
               Rooted in the long continuum of human toolmaking, the Collective connects learning, local action, global chapters, and policy so communities can help shape the future together.
             </p>
           </motion.div>
@@ -353,7 +353,7 @@ function ThreePillarsPreview() {
   ];
 
   return (
-    <section id="programs" className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
+    <section id="programs" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -362,10 +362,10 @@ function ThreePillarsPreview() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl text-[#FDFDFB] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#FDFDFB] mb-4">
             Our Three Pillars
           </h2>
-          <p className="text-lg text-[#FDFDFB]/60">
+          <p className="text-base sm:text-lg text-[#FDFDFB]/60">
             Learning, local action, and systems change working together.
           </p>
         </motion.div>
@@ -395,7 +395,7 @@ function ThreePillarsPreview() {
                       <pillar.icon className="w-8 h-8 text-[#65D6C8]" />
                     </div>
                     
-                    <h3 className="text-[2rem] leading-tight text-[#FDFDFB] mb-4">
+                    <h3 className="text-[1.6rem] sm:text-[2rem] leading-tight text-[#FDFDFB] mb-4">
                       {pillar.title}
                     </h3>
                     
@@ -456,7 +456,7 @@ function UpcomingEventsPreview() {
 // ========================================
 function GlobalNetworkPreview({ onStartChapterClick }: { onStartChapterClick: () => void }) {
   return (
-    <section id="chapters" className="relative py-24 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
+    <section id="chapters" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -465,10 +465,10 @@ function GlobalNetworkPreview({ onStartChapterClick }: { onStartChapterClick: ()
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl text-[#FDFDFB] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#FDFDFB] mb-4">
             A Living Global Network
           </h2>
-          <p className="text-lg text-[#FDFDFB]/60">
+          <p className="text-base sm:text-lg text-[#FDFDFB]/60">
             28 chapters across 20 countries, connected by shared purpose
           </p>
         </motion.div>
@@ -532,7 +532,7 @@ function BuildersPreview({ onSelectBuilder }: any) {
   ];
 
   return (
-    <section id="builders" className="relative py-24 px-6">
+    <section id="builders" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -541,10 +541,10 @@ function BuildersPreview({ onSelectBuilder }: any) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl text-[#FDFDFB] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#FDFDFB] mb-4">
             Meet the Builders
           </h2>
-          <p className="text-lg text-[#FDFDFB]/60">
+          <p className="text-base sm:text-lg text-[#FDFDFB]/60">
             People building practical, human-centered pathways into the future of AI.
           </p>
         </motion.div>
@@ -615,7 +615,7 @@ function StartChapterModal({ onClose }: { onClose: () => void }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+      <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 md:p-6 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -629,20 +629,20 @@ function StartChapterModal({ onClose }: { onClose: () => void }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
           transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-          className="relative w-full max-w-4xl rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
+          className="relative w-full max-w-4xl my-4 sm:my-0 rounded-[22px] sm:rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
         >
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#65D6C8]/50 to-transparent" />
 
           {!submitted ? (
             <>
-              <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-6 md:px-8 py-5">
+              <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-4 sm:px-6 md:px-8 py-4 sm:py-5">
                 <div className="flex items-start justify-between gap-6">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Globe className="w-5 h-5 text-[#65D6C8]" />
                       <span className="text-xs text-[#7A6FF0] uppercase tracking-[0.22em]">Global Chapters</span>
                     </div>
-                    <h3 className="text-2xl md:text-3xl text-[#FDFDFB] leading-tight">Start a Chapter</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl text-[#FDFDFB] leading-tight pr-8">Start a Chapter</h3>
                     <p className="text-sm md:text-base text-[#FDFDFB]/60 max-w-2xl leading-relaxed">
                       Bring the Collective into your city, campus, or community.
                     </p>
@@ -661,10 +661,10 @@ function StartChapterModal({ onClose }: { onClose: () => void }) {
                 </div>
               </div>
 
-              <div className="p-6 md:p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#7A6FF0]/14 to-[#65D6C8]/10 blur-2xl opacity-60" />
-                  <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-5 md:p-6">
+                  <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-4 sm:p-5 md:p-6">
                     <div className="mb-6 max-w-2xl">
                       <p className="text-sm md:text-base text-[#FDFDFB]/72 leading-relaxed mb-3">
                         We’re looking for thoughtful local organizers who want to create practical pathways into the future of AI through learning, dialogue, and community action.
@@ -753,7 +753,7 @@ function StartChapterModal({ onClose }: { onClose: () => void }) {
               </div>
             </>
           ) : (
-            <div className="p-6 md:p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               <div className="rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-8 text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#65D6C8]/20 to-[#7A6FF0]/20 flex items-center justify-center mx-auto mb-6">
                   <Globe className="w-8 h-8 text-[#65D6C8]" />
@@ -800,7 +800,7 @@ function JoinCTASection({ onSupportClick }: { onSupportClick: () => void }) {
   ] as const;
 
   return (
-    <section className="relative py-32 px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
+    <section className="relative py-18 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-[#040619] via-[#0D1226] to-[#040619]">
       <div className="max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -809,7 +809,7 @@ function JoinCTASection({ onSupportClick }: { onSupportClick: () => void }) {
           transition={{ duration: 0.8 }}
           className="text-center mb-18 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl text-[#FDFDFB] mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#FDFDFB] mb-5 sm:mb-6">
             Choose how you want to take part
           </h2>
           <p className="text-lg text-[#FDFDFB]/70 leading-relaxed max-w-[820px] mx-auto">
@@ -817,7 +817,7 @@ function JoinCTASection({ onSupportClick }: { onSupportClick: () => void }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-7">
           {pathways.map((item, index) => (
             <motion.div
               key={item.title}
@@ -827,9 +827,9 @@ function JoinCTASection({ onSupportClick }: { onSupportClick: () => void }) {
               transition={{ duration: 0.7, delay: index * 0.08 }}
               className="h-full"
             >
-              <div className="h-full min-h-[290px] rounded-2xl border border-[#65D6C8]/15 bg-[#FDFDFB]/[0.03] backdrop-blur-sm px-7 py-8 flex flex-col justify-between">
+              <div className="h-full min-h-[250px] sm:min-h-[290px] rounded-2xl border border-[#65D6C8]/15 bg-[#FDFDFB]/[0.03] backdrop-blur-sm px-5 sm:px-7 py-6 sm:py-8 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-[2rem] leading-tight text-[#FDFDFB] mb-4">{item.title}</h3>
+                  <h3 className="text-[1.6rem] sm:text-[2rem] leading-tight text-[#FDFDFB] mb-4">{item.title}</h3>
                   <p className="max-w-[30ch] text-sm leading-7 text-[#FDFDFB]/65">
                     {item.description}
                   </p>
@@ -859,9 +859,9 @@ function JoinCTASection({ onSupportClick }: { onSupportClick: () => void }) {
             transition={{ duration: 0.7, delay: 0.24 }}
             className="h-full"
           >
-            <div className="h-full min-h-[290px] rounded-2xl border border-[#F5B700]/18 bg-gradient-to-br from-[#F5B700]/[0.07] to-[#7A6FF0]/[0.07] backdrop-blur-sm px-7 py-8 flex flex-col justify-between">
+            <div className="h-full min-h-[250px] sm:min-h-[290px] rounded-2xl border border-[#F5B700]/18 bg-gradient-to-br from-[#F5B700]/[0.07] to-[#7A6FF0]/[0.07] backdrop-blur-sm px-5 sm:px-7 py-6 sm:py-8 flex flex-col justify-between">
               <div>
-                <h3 className="text-[2rem] leading-tight text-[#FDFDFB] mb-4">Support the Work</h3>
+                <h3 className="text-[1.6rem] sm:text-[2rem] leading-tight text-[#FDFDFB] mb-4">Support the Work</h3>
                 <p className="max-w-[30ch] text-sm leading-7 text-[#FDFDFB]/68">
                   Help sustain learning, local chapters, and long-term systems work through direct support.
                 </p>

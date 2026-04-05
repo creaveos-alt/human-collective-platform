@@ -59,7 +59,7 @@ export function SharedLayout() {
 function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOpen, currentPath, onDonateClick }: any) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#040619]/95 backdrop-blur-xl border-b border-[#65D6C8]/20">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/#top" className="px-4 py-1">
@@ -302,8 +302,8 @@ function Footer({ onDonateClick }: any) {
       {/* Aurora glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#7A6FF0]/5 to-transparent pointer-events-none" />
 
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="relative max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-10 sm:mb-12">
           {/* About Column */}
           <div>
             <h3 className="text-[#FDFDFB] font-semibold mb-4">About</h3>
@@ -373,7 +373,7 @@ function Footer({ onDonateClick }: any) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#65D6C8]/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-[#65D6C8]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="text-[#FDFDFB]/50 text-sm">
             © 2026 Human + AI Collective. All rights reserved.
           </div>

@@ -49,10 +49,10 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="relative aspect-[2/1] rounded-2xl border border-[#65D6C8]/20 bg-gradient-to-br from-[#040619] to-[#0D1226] overflow-hidden"
+        className="relative aspect-[1.25/1] sm:aspect-[1.6/1] md:aspect-[2/1] rounded-2xl border border-[#65D6C8]/20 bg-gradient-to-br from-[#040619] to-[#0D1226] overflow-hidden"
       >
         {/* Real world map background */}
-        <div className="absolute inset-0 flex items-center justify-center px-8 md:px-12">
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 md:px-12">
           <img
             src={worldMap}
             alt="World map"
@@ -211,7 +211,7 @@ export function GlobalNetworkMap({ preview = false }: { preview?: boolean }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="mt-6 grid grid-cols-3 gap-5"
+        className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5"
       >
         <div className="text-center px-4 py-3 rounded-xl border border-[#65D6C8]/8 bg-[#FDFDFB]/[0.02] backdrop-blur-sm">
           <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] bg-clip-text text-transparent mb-1">

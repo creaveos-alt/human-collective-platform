@@ -184,7 +184,7 @@ function RSVPModal({ event, isOpen, onClose }: any) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-6">
+      <div className="fixed inset-0 z-[60] flex items-start sm:items-center justify-center p-3 md:p-6 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -199,13 +199,13 @@ function RSVPModal({ event, isOpen, onClose }: any) {
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
           transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-3xl rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
+          className="relative w-full max-w-3xl my-4 sm:my-0 rounded-[22px] sm:rounded-[28px] border border-[#7A6FF0]/35 bg-[#0B1023]/95 shadow-[0_0_80px_rgba(101,214,200,0.08)] overflow-hidden"
         >
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#65D6C8]/50 to-transparent" />
 
           {step === 'form' ? (
             <>
-              <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-6 md:px-8 py-5">
+              <div className="border-b border-[#65D6C8]/18 bg-[#10162E]/92 backdrop-blur-lg px-4 sm:px-6 md:px-8 py-4 sm:py-5">
                 <div className="flex items-start justify-between gap-6">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ function RSVPModal({ event, isOpen, onClose }: any) {
                         {event.isFlagship ? 'Flagship Event Series' : 'Upcoming Event'}
                       </span>
                     </div>
-                    <h3 className="text-2xl md:text-3xl text-[#FDFDFB] leading-tight">{event.name}</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl text-[#FDFDFB] leading-tight pr-8">{event.name}</h3>
                     <p className="text-sm md:text-base text-[#FDFDFB]/60 max-w-2xl leading-relaxed">
                       Reserve your place and we’ll share the details with you.
                     </p>
@@ -230,10 +230,10 @@ function RSVPModal({ event, isOpen, onClose }: any) {
                 </div>
               </div>
 
-              <div className="p-6 md:p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#7A6FF0]/14 to-[#65D6C8]/10 blur-2xl opacity-60" />
-                  <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-6 md:p-7">
+                  <div className="relative rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-4 sm:p-6 md:p-7">
                     <div className="mb-6 rounded-2xl border border-[#65D6C8]/12 bg-[#040619]/60 px-5 py-5">
                       <div className="space-y-3 text-sm text-[#FDFDFB]/75">
                         <div className="flex items-center gap-3">
@@ -312,7 +312,7 @@ function RSVPModal({ event, isOpen, onClose }: any) {
               </div>
             </>
           ) : (
-            <div className="p-6 md:p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               <div className="rounded-2xl border border-[#7A6FF0]/25 bg-[#040619]/55 backdrop-blur-sm p-8 text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#65D6C8]/20 to-[#7A6FF0]/20 flex items-center justify-center mx-auto mb-6">
                   <Check className="w-8 h-8 text-[#65D6C8]" strokeWidth={3} />
@@ -360,12 +360,12 @@ function EventDetailPanel({ event, isOpen, onClose, onJoinEvent }: any) {
           exit={{ x: "100%" }}
           transition={{ duration: 0.35, ease: "easeOut" }}
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-0 right-0 bottom-0 w-full md:w-[550px] bg-gradient-to-br from-[#111931]/98 to-[#0a0a2e]/98 backdrop-blur-xl border-l border-[#65D6C8]/20 overflow-y-auto"
+          className="absolute top-0 right-0 bottom-0 w-full md:w-[550px] bg-gradient-to-br from-[#111931]/98 to-[#0a0a2e]/98 backdrop-blur-xl border-l border-[#65D6C8]/20 overflow-y-auto p-safe"
         >
           <div className="p-8 space-y-6">
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-[#65D6C8]/10 transition-colors z-10"
+              className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-[#040619]/35 md:bg-transparent hover:bg-[#65D6C8]/10 transition-colors z-10"
             >
               <X className="w-5 h-5 text-[#FDFDFB]/70" />
             </button>
@@ -377,7 +377,7 @@ function EventDetailPanel({ event, isOpen, onClose, onJoinEvent }: any) {
               </div>
             )}
 
-            <h3 className="text-3xl text-[#FDFDFB] font-semibold pr-12">{event.name}</h3>
+            <h3 className="text-2xl sm:text-3xl text-[#FDFDFB] font-semibold pr-12">{event.name}</h3>
 
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 rounded-full bg-[#7A6FF0]/10 border border-[#7A6FF0]/30 text-sm text-[#7A6FF0]">
@@ -494,20 +494,20 @@ function FullCalendarModal({ isOpen, onClose, onSelectEvent }: any) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-[60] flex items-center justify-center bg-[#040619]/90 backdrop-blur-md p-6"
+        className="fixed inset-0 z-[60] flex items-start sm:items-center justify-center bg-[#040619]/90 backdrop-blur-md p-3 sm:p-6 overflow-y-auto"
       >
         <motion.div
           initial={{ scale: 0.95, y: -20 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.95, y: -20 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-5xl bg-gradient-to-br from-[#111931]/98 to-[#0a0a2e]/98 rounded-2xl border border-[#65D6C8]/30 shadow-[0_0_60px_rgba(101,214,200,0.25)] overflow-hidden"
+          className="relative w-full max-w-5xl my-4 sm:my-0 bg-gradient-to-br from-[#111931]/98 to-[#0a0a2e]/98 rounded-2xl border border-[#65D6C8]/30 shadow-[0_0_60px_rgba(101,214,200,0.25)] overflow-hidden"
         >
           {/* Header */}
           <div className="relative p-6 border-b border-[#65D6C8]/20">
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-[#65D6C8]/10 transition-colors"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-[#040619]/35 sm:bg-transparent hover:bg-[#65D6C8]/10 transition-colors"
             >
               <X className="w-5 h-5 text-[#FDFDFB]/70" />
             </button>
@@ -535,8 +535,8 @@ function FullCalendarModal({ isOpen, onClose, onSelectEvent }: any) {
           </div>
 
           {/* Calendar Grid */}
-          <div className="p-6 overflow-y-auto max-h-[60vh]">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 sm:p-6 overflow-y-auto max-h-[70vh] sm:max-h-[60vh]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               {/* December */}
               <div className="p-4 rounded-xl bg-[#040619]/30 border border-[#65D6C8]/10">
                 <h4 className="text-lg text-[#FDFDFB] mb-4">December 2024</h4>
@@ -690,7 +690,7 @@ export function FullyInteractiveEventsSection() {
       <motion.section
         ref={sectionRef}
         style={{ opacity }}
-        className="relative py-32 md:py-40 overflow-hidden"
+        className="relative py-16 sm:py-24 md:py-40 overflow-hidden"
       >
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#090F1E] via-[#0E1B4C] to-[#090F1E]" />
@@ -709,7 +709,7 @@ export function FullyInteractiveEventsSection() {
           className="absolute top-1/3 left-0 right-0 h-1/3 bg-gradient-to-r from-transparent via-[#65D6C8]/10 to-transparent blur-3xl"
         />
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-6">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-5 sm:px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -733,7 +733,7 @@ export function FullyInteractiveEventsSection() {
               onClick={prevSlide}
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(101,214,200,0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400 md:-left-8 md:p-2.5"
               aria-label="Previous event"
             >
               <ChevronLeft className="w-6 h-6 text-[#65D6C8]" />
@@ -743,20 +743,20 @@ export function FullyInteractiveEventsSection() {
               onClick={nextSlide}
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(101,214,200,0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400"
+              className="absolute right-1 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[#111931]/90 border border-[#65D6C8]/30 backdrop-blur-sm transition-all duration-400 md:-right-8 md:p-2.5"
               aria-label="Next event"
             >
               <ChevronRight className="w-6 h-6 text-[#65D6C8]" />
             </motion.button>
 
             {/* Cards */}
-            <div className="relative px-12 md:px-16">
+            <div className="relative px-8 sm:px-10 md:px-16">
               <motion.div 
                 key={currentIndex}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6"
               >
                 {visibleCards.map((event, i) => (
                   <motion.div
@@ -798,11 +798,11 @@ export function FullyInteractiveEventsSection() {
                           <span className="text-[#BBD0FF]">{event.type}</span>
                         </div>
 
-                        <h3 className="text-xl text-[#FDFDFB] leading-tight">
+                        <h3 className="text-lg sm:text-xl text-[#FDFDFB] leading-tight">
                           {event.name}
                         </h3>
 
-                        <p className="text-base text-[#FDFDFB]/75 leading-relaxed line-clamp-3 min-h-[96px]">
+                        <p className="text-sm sm:text-base text-[#FDFDFB]/75 leading-relaxed line-clamp-3 min-h-0 sm:min-h-[96px]">
                           {event.description}
                         </p>
 

@@ -102,15 +102,15 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.985 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[71] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[71] flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-y-auto"
           >
             <div
-              className="relative w-full max-w-5xl rounded-[34px] border border-[#65D6C8]/24 bg-gradient-to-br from-[#111931]/96 to-[#0A1025]/96 shadow-[0_0_80px_rgba(101,214,200,0.12)] overflow-hidden"
+              className="relative w-full max-w-5xl my-4 sm:my-0 rounded-[24px] sm:rounded-[34px] border border-[#65D6C8]/24 bg-gradient-to-br from-[#111931]/96 to-[#0A1025]/96 shadow-[0_0_80px_rgba(101,214,200,0.12)] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,rgba(122,111,240,0.14),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(101,214,200,0.10),transparent_28%)]" />
 
-              <div className="relative px-6 sm:px-10 pt-7 sm:pt-8 pb-0">
+              <div className="relative px-4 sm:px-10 pt-5 sm:pt-8 pb-0">
                 <div className="flex items-start justify-between gap-6">
                   <div className="pr-10">
                     <div className="flex items-center gap-3 mb-3">
@@ -119,10 +119,10 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                         Support the Collective
                       </span>
                     </div>
-                    <h2 className="text-[2rem] sm:text-[2.6rem] leading-tight text-[#FDFDFB]">
+                    <h2 className="text-[1.5rem] sm:text-[2.6rem] leading-tight text-[#FDFDFB]">
                       Contribute to the work
                     </h2>
-                    <p className="mt-3 max-w-3xl text-[#FDFDFB]/72 text-base sm:text-[1.05rem] leading-8">
+                    <p className="mt-3 max-w-3xl text-[#FDFDFB]/72 text-sm sm:text-[1.05rem] leading-6 sm:leading-8">
                       Help expand AI literacy, strengthen local chapters, and support the systems work
                       that makes the Collective durable, practical, and human-centered.
                     </p>
@@ -130,7 +130,7 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
 
                   <button
                     onClick={onClose}
-                    className="shrink-0 p-2 rounded-full text-[#FDFDFB]/65 hover:text-[#FDFDFB] transition-all"
+                    className="shrink-0 p-2 rounded-full text-[#FDFDFB]/80 hover:text-[#FDFDFB] bg-[#040619]/40 sm:bg-transparent transition-all"
                     aria-label="Close modal"
                   >
                     <X className="w-6 h-6" />
@@ -140,8 +140,8 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                 <div className="mt-7 h-px w-full bg-gradient-to-r from-[#65D6C8]/30 via-[#7A6FF0]/20 to-transparent" />
               </div>
 
-              <div className="relative p-6 sm:p-8">
-                <div className="rounded-[28px] border border-[#65D6C8]/16 bg-[#060B1D]/88 px-5 py-5 sm:px-8 sm:py-8">
+              <div className="relative p-3 sm:p-8">
+                <div className="rounded-[20px] sm:rounded-[28px] border border-[#65D6C8]/16 bg-[#060B1D]/88 px-4 py-4 sm:px-8 sm:py-8">
                   {step === 1 && (
                     <div className="space-y-7">
                       <div>
@@ -153,7 +153,7 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                         </p>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <button
                           onClick={() => setFrequency("one-time")}
                           className={`h-14 rounded-[18px] border transition-all ${
@@ -176,7 +176,7 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                         </button>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {impactCues.map((cue) => (
                           <div
                             key={cue.amount}
@@ -190,7 +190,7 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
 
                       <div>
                         <label className="block text-sm text-[#FDFDFB]/72 mb-3">Preset amounts</label>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                           {presetAmounts.map((amount) => {
                             const active = selectedAmount === amount;
                             return (
@@ -302,16 +302,16 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                     </div>
                   )}
 
-                  <div className="mt-8 pt-6 border-t border-[#65D6C8]/12 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+                  <div className="mt-8 pt-6 border-t border-[#65D6C8]/12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="text-sm text-[#FDFDFB]/42 italic">
                       “Small contributions can widen the continuum.”
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:items-center w-full sm:w-auto">
                       {step !== 1 && step !== 3 && (
                         <button
                           onClick={handleBack}
-                          className="h-14 px-7 rounded-[18px] border border-[#65D6C8]/20 text-[#FDFDFB] hover:border-[#65D6C8]/40 transition-all"
+                          className="h-14 w-full sm:w-auto px-7 rounded-[18px] border border-[#65D6C8]/20 text-[#FDFDFB] hover:border-[#65D6C8]/40 transition-all"
                         >
                           Back
                         </button>
@@ -323,7 +323,7 @@ export function PolishedDonationModal({ isOpen, onClose }: DonationModalProps) {
                           (step === 1 && !canContinueFromStep1) ||
                           (step === 2 && !canContinueFromStep2)
                         }
-                        className="h-14 px-8 rounded-[18px] bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium inline-flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="h-14 w-full sm:w-auto px-8 rounded-[18px] bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium inline-flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         {step === 1 && "Continue"}
                         {step === 2 && "Confirm Contribution"}
