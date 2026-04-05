@@ -78,27 +78,27 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[100svh] md:min-h-[110vh] flex-col items-center justify-center overflow-hidden pt-[88px] md:pt-[80px]"
+      className="relative flex min-h-[100svh] md:min-h-[96vh] flex-col items-center justify-start md:justify-center overflow-hidden pt-[20px] md:pt-[80px]"
     >
       {/* Aurora gradients */}
       <motion.div
         animate={{ x: ["-100%", "100%"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-[#7A6FF0]/10 to-transparent blur-3xl"
+        className="absolute inset-x-0 top-0 h-[78%] bg-gradient-to-r from-transparent via-[#7A6FF0]/10 to-transparent blur-3xl"
       />
       <motion.div
         animate={{ x: ["100%", "-100%"] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-[#65D6C8]/10 to-transparent blur-3xl"
+        className="absolute inset-x-0 top-0 h-[78%] bg-gradient-to-r from-transparent via-[#65D6C8]/10 to-transparent blur-3xl"
       />
 
       {/* Content Container */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-5 sm:px-6"
+        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-5 sm:px-6 pt-0 -translate-y-28 sm:-translate-y-8 md:-translate-y-44 pb-0"
       >
         {/* Crystal - 225 x 225, 40px from header */}
-        <div className="relative w-[170px] h-[170px] sm:w-[200px] sm:h-[200px] md:w-[225px] md:h-[225px] flex items-center justify-center mb-8 sm:mb-10">
+        <div className="relative w-[170px] h-[170px] sm:w-[200px] sm:h-[200px] md:w-[225px] md:h-[225px] flex items-center justify-center mb-2 sm:mb-10">
           {/* Ambient Aurora Sweeps */}
           <motion.div
             animate={{ x: ["-120%", "120%"] }}
@@ -146,7 +146,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
-          className="text-center w-full max-w-[1000px] mb-10"
+          className="text-center w-full max-w-[1000px] mb-8 sm:mb-10"
         >
           <h1 
             className="text-[#FDFDFB] text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.02]"
@@ -171,7 +171,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-col sm:flex-row items-center gap-5 mb-10"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 mb-6 sm:mb-8"
         >
           <Link to="/programs">
             <motion.button
@@ -218,24 +218,12 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-[1000px]"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-[1000px] mb-0 md:-mb-64"
         >
           <MetricCard value="5K+" label="Community Members" delay={0} />
           <MetricCard value="28" label="Global Chapters" delay={0.3} />
           <MetricCard value="300+" label="Learning Sessions" delay={0.6} />
         </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#65D6C8]/60 text-sm"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span>Explore the Continuum</span>
-          <ArrowRight className="w-4 h-4 rotate-90" />
-        </div>
       </motion.div>
     </section>
   );
@@ -281,7 +269,7 @@ function MetricCard({ value, label, delay }: { value: string; label: string; del
 // ========================================
 function PhilosophySection() {
   return (
-    <section id="about" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6">
+    <section id="about" className="relative -mt-20 md:-mt-40 py-16 sm:py-20 md:py-24 px-5 sm:px-6">
       <div className="max-w-[1440px] mx-auto">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.div
