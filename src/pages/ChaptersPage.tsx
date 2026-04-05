@@ -1,14 +1,23 @@
+import { useLocation } from "react-router";
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
 import { Globe, Users, MapPin, Plus, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GlobalNetworkMap } from "../components/GlobalNetworkMap";
 
 export function ChaptersPage() {
   const [showStartForm, setShowStartForm] = useState(false);
 
-  const chapters = [
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#start-chapter") {
+      setShowStartForm(true);
+    }
+  }, [location.hash]);
+const chapters = [
     { city: "San Francisco", country: "USA", members: 450 },
     { city: "New York", country: "USA", members: 380 },
     { city: "London", country: "UK", members: 320 },
