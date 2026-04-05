@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { Heart, Calendar, Menu, X, ChevronDown } from "lucide-react";
 import { BrandWordmark } from "./BrandWordmark";
+import { DonationModal } from "./CTAModals";
 
 export function SharedLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
+  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -35,6 +37,7 @@ export function SharedLayout() {
         programsOpen={programsOpen}
         setProgramsOpen={setProgramsOpen}
         currentPath={location.pathname}
+        onDonateClick={() => setIsDonateModalOpen(true)}
       />
 
       {/* Main Content */}
@@ -43,12 +46,17 @@ export function SharedLayout() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onDonateClick={() => setIsDonateModalOpen(true)} />
+
+      <DonationModal
+        isOpen={isDonateModalOpen}
+        onClose={() => setIsDonateModalOpen(false)}
+      />
     </div>
   );
 }
 
-function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOpen, currentPath }: any) {
+function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOpen, currentPath, onDonateClick }: any) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#040619]/95 backdrop-blur-xl border-b border-[#65D6C8]/20">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-4">
@@ -182,18 +190,17 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
                 Get Involved
               </motion.button>
             </Link>
-            <Link to="/donate">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] text-sm font-medium tracking-wide transition-all duration-400 hover:shadow-[0_0_30px_rgba(101,214,200,0.4)]"
-              >
-                <span className="flex items-center gap-2">
-                  <Heart className="w-4 h-4" />
-                  Donate
-                </span>
-              </motion.button>
-            </Link>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onDonateClick}
+              className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] text-sm font-medium tracking-wide transition-all duration-400 hover:shadow-[0_0_30px_rgba(101,214,200,0.4)]"
+            >
+              <span className="flex items-center gap-2">
+                <Heart className="w-4 h-4" />
+                Donate
+              </span>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -270,11 +277,15 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
                       Get Involved
                     </button>
                   </Link>
-                  <Link to="/donate" onClick={() => setMobileMenuOpen(false)}>
-                    <button className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] text-sm font-medium">
-                      Donate
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onDonateClick();
+                    }}
+                    className="text-left text-[#FDFDFB]/80 hover:text-[#65D6C8] transition-all"
+                  >
+                    Donate
+                  </button>
                 </div>
               </nav>
             </motion.div>
@@ -285,7 +296,7 @@ function Header({ mobileMenuOpen, setMobileMenuOpen, programsOpen, setProgramsOp
   );
 }
 
-function Footer() {
+function Footer({ onDonateClick }: any) {
   return (
     <footer className="relative border-t border-[#65D6C8]/20 bg-[#040619]">
       {/* Aurora glow */}
@@ -351,9 +362,12 @@ function Footer() {
               <Link to="/contact" className="text-[#FDFDFB]/60 hover:text-[#65D6C8] text-sm transition-all">
                 Contact Us
               </Link>
-              <Link to="/donate" className="text-[#FDFDFB]/60 hover:text-[#65D6C8] text-sm transition-all">
+              <button
+                onClick={onDonateClick}
+                className="text-[#FDFDFB]/60 hover:text-[#65D6C8] text-sm transition-all text-left"
+              >
                 Support Our Work
-              </Link>
+              </button>
             </nav>
           </div>
         </div>
