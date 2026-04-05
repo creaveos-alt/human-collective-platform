@@ -78,7 +78,7 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[100svh] md:min-h-[96vh] flex-col items-center justify-start md:justify-center overflow-hidden pt-[20px] md:pt-[80px]"
+      className="relative flex min-h-[100svh] md:min-h-[96vh] flex-col items-center justify-start md:justify-center overflow-hidden pt-[88px] md:pt-[80px]"
     >
       {/* Aurora gradients */}
       <motion.div
@@ -95,10 +95,10 @@ function HeroSection() {
       {/* Content Container */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-5 sm:px-6 pt-0 -translate-y-28 sm:-translate-y-8 md:-translate-y-44 pb-0"
+        className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-5 sm:px-6 pt-0 translate-y-0 sm:-translate-y-8 md:-translate-y-44 pb-0"
       >
         {/* Crystal - 225 x 225, 40px from header */}
-        <div className="relative w-[170px] h-[170px] sm:w-[200px] sm:h-[200px] md:w-[225px] md:h-[225px] flex items-center justify-center mb-2 sm:mb-10">
+        <div className="relative w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] md:w-[225px] md:h-[225px] flex items-center justify-center mb-4 sm:mb-10">
           {/* Ambient Aurora Sweeps */}
           <motion.div
             animate={{ x: ["-120%", "120%"] }}
@@ -149,8 +149,8 @@ function HeroSection() {
           className="text-center w-full max-w-[1000px] mb-8 sm:mb-10"
         >
           <h1 
-            className="text-[#FDFDFB] text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.02]"
-            style={{ fontSize: "60px" }}
+            className="text-[#FDFDFB] text-[1.95rem] sm:text-[2.75rem] md:text-7xl lg:text-8xl leading-[1.06] sm:leading-[1.02]"
+            style={{ fontSize: "clamp(2.2rem, 9vw, 60px)" }}
           >
             No one left behind in the age of AI.
           </h1>
@@ -161,7 +161,7 @@ function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1 }}
-          className="text-center w-full max-w-[1000px] text-base sm:text-lg md:text-xl text-[#FDFDFB]/80 leading-relaxed mb-8 sm:mb-10 px-1"
+          className="text-center w-full max-w-[1000px] text-[1.05rem] sm:text-lg md:text-xl text-[#FDFDFB]/80 leading-8 sm:leading-relaxed mb-8 sm:mb-10 px-1"
         >
           The Human + AI Collective builds practical pathways into the future through learning, local chapters, shared opportunity, and policy shaped by people.
         </motion.p>
@@ -171,17 +171,17 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 mb-6 sm:mb-8"
+          className="flex flex-col sm:flex-row items-center sm:justify-center gap-3 sm:gap-5 mb-6 sm:mb-8 w-full mx-auto"
         >
-          <Link to="/programs">
+          <Link to="/programs" className="block w-full max-w-[360px] sm:w-auto sm:max-w-none">
             <motion.button
               whileHover={{ 
                 scale: 1.03,
                 boxShadow: "0 0 40px rgba(101,214,200,0.4)"
               }}
               whileTap={{ scale: 0.98 }}
-              className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium tracking-wide transition-all duration-400"
-              style={{ width: "220px", height: "60px" }}
+              className="group relative flex w-full sm:w-[220px] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-r from-[#65D6C8] to-[#7A6FF0] text-[#040619] font-medium tracking-wide transition-all duration-400"
+              style={{ height: "60px" }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#A8F0E4] to-[#7A6FF0] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -191,7 +191,7 @@ function HeroSection() {
             </motion.button>
           </Link>
 
-          <Link to="/events">
+          <Link to="/events" className="block w-full max-w-[360px] sm:w-auto sm:max-w-none">
             <motion.button
               whileHover={{ 
                 scale: 1.03,
@@ -199,8 +199,8 @@ function HeroSection() {
                 boxShadow: "0 0 30px rgba(122,111,240,0.3)"
               }}
               whileTap={{ scale: 0.98 }}
-              className="group relative overflow-hidden rounded-lg border-2 border-[#7A6FF0]/50 bg-gradient-to-r from-[#7A6FF0]/5 to-[#65D6C8]/5 text-[#FDFDFB] font-medium tracking-wide transition-all duration-400"
-              style={{ width: "240px", height: "60px" }}
+              className="group relative flex w-full sm:w-[240px] items-center justify-center overflow-hidden rounded-lg border-2 border-[#7A6FF0]/50 bg-gradient-to-r from-[#7A6FF0]/5 to-[#65D6C8]/5 text-[#FDFDFB] font-medium tracking-wide transition-all duration-400"
+              style={{ height: "60px" }}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#7A6FF0]/15 to-[#65D6C8]/15" />
@@ -413,7 +413,7 @@ function ThreePillarsPreview() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <Link to="/programs">
+          <Link to="/programs" className="block w-full max-w-[360px] sm:w-auto sm:max-w-none">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
