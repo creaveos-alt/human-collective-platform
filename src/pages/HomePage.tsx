@@ -269,7 +269,7 @@ function MetricCard({ value, label, delay }: { value: string; label: string; del
 // ========================================
 function PhilosophySection() {
   return (
-    <section id="about" className="relative -mt-20 md:-mt-40 py-16 sm:py-20 md:py-24 px-5 sm:px-6">
+    <section id="about" className="relative -mt-6 sm:-mt-10 md:-mt-40 py-16 sm:py-20 md:py-24 px-5 sm:px-6">
       <div className="max-w-[1440px] mx-auto">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.div
